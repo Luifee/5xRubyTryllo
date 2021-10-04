@@ -1,4 +1,5 @@
-import "tailwindcss/base"
-import "tailwindcss/components"
-import "@fortawesome/fontawesome-free/css/all.css"
-import "tailwindcss/utilities"
+import "tailwindcss/base";
+import "tailwindcss/components";
+import "./application";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "tailwindcss/utilities";
