@@ -1,0 +1,26 @@
+.field {
+  .label {
+    @apply block font-semibold;
+  }
+  .input {
+    @apply px-3 py-2 text-lg border border-gray-600 rounded;
+
+    &:focus {
+      @apply outline-white;
+    }
+  }
+}
+
+.button {
+  @apply bg-yellow-200 px-3 py-2 rounded;
+}
+
+nav {
+  .user-button {
+    @apply px-3 py-2 text-black bg-yellow-200 rounded;
+
+    &:hover {
+      @apply bg-green-100;
+    }
+  }
+}
