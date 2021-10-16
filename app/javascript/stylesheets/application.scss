@@ -13,6 +13,10 @@
 
 .button {
   @apply bg-yellow-200 px-3 py-2 rounded;
+
+  &:hover {
+    @apply bg-yellow-100;
+  }
 }
 
 nav {
@@ -20,7 +24,7 @@ nav {
     @apply px-3 py-2 text-black bg-yellow-200 rounded;
 
     &:hover {
-      @apply bg-green-100;
+      @apply bg-yellow-50;
     }
   }
 }
