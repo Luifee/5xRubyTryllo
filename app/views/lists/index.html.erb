@@ -1,13 +1,5 @@
-<h1>Lists</h1>
-
-<div class="mt-2 flex">
-  <% @lists.each do |list| %>
-    <div class="bg-blue-200 mx-2 w-64 rounded">
-      <h2 class="px-3 py-1 font-bold"><%= list.name %></h2>
-    </div>
-  <% end %>
+<div id="board" class="flex px-4 py-2" data-lists="<%= @lists.to_json(include: :cards) %>">
+  <div class="bg-green-100 m-2 w-64 rounded" v-for="list in lists">
+    <h2 class="px-3 py-1 font-bold">{{ list.name }}<br /></h2>
+  </div>
 </div>
-
-<br>
-
-<%= link_to 'New List', new_list_path %>

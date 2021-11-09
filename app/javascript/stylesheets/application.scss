@@ -3,7 +3,7 @@
     @apply block font-semibold;
   }
   .input {
-    @apply px-3 py-2 text-lg border border-gray-600 rounded;
+    @apply px-3 py-2 text-lg border border-gray-600 rounded mb-3;
 
     &:focus {
       @apply outline-white;
