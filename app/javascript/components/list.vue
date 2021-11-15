@@ -4,8 +4,10 @@
     <div class="deck">
       <Card v-for="card in cards" :card="card" :key="card.id"></Card>
       <div class="input-area">
-        <textarea class="content" v-model="content"></textarea>
-        <button class="button" @click="createCard">新增便箋</button>
+        <button v-if="!editing" class="button" @click="newCard">新增便箋</button>
+        <textarea v-if="editing" class="content" v-model="content"></textarea>
+        <button v-if="editing" class="button" @click="createCard">送出便箋</button>
+        <button v-if="editing" class="button" @click="editing = false">取消</button>
       </div>
     </div>
   </div>
@@ -22,10 +24,15 @@ export default {
   data: function() {
     return {
       content: '',
-      cards: this.list.cards
+      cards: this.list.cards,
+      editing: false
     }
   },
   methods: {
+    newCard(event) {
+      event.preventDefault();
+      this.editing = true;
+    };
     createCard(evt) {
       evt.preventDefault();
 
@@ -42,6 +49,7 @@ export default {
           console.log(resp);
           this.cards.push(resp);
           this.content = "";
+          this.editing = false;
         },
         error: err => {
           console.log(err);
