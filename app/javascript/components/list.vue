@@ -1,22 +1,32 @@
 <template>
   <div class="list">
     <h2 class="header">{{ list.name }}<br /></h2>
+    <div class="deck">
+      <Card v-for="card in list.cards" :card="card" :key="card.id"></Card>
+    </div>
   </div>
 </template>
 
 <script>
+import Card from 'components/card';
+
 export default {
   name: 'List',
-  props: ["list"]
+  props: ["list"],
+  components: { Card }
 }
 </script>
 
 <style lang="scss" scoped>
 .list {
-  @apply bg-green-100 m-2 w-64 rounded;
+  @apply bg-indigo-300 m-2 w-64 px-3 py-1 rounded;
 
   .header {
-    @apply px-3 py-1 font-bold;
+    @apply font-bold;
+  }
+
+  .deck {
+    @apply mt-2;
   }
 }
 </style>
