@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: %i[ show edit update destroy ]
+  before_action :set_list, only: %i[ show edit update destroy move]
   before_action :authenticate_user!
 
   # GET /lists or /lists.json
@@ -9,6 +9,11 @@ class ListsController < ApplicationController
 
   # GET /lists/1 or /lists/1.json
   def show
+  end
+
+  def move
+    @list.insert_at(list_params[:position].to_i)
+    render 'show.json'
   end
 
   # GET /lists/new

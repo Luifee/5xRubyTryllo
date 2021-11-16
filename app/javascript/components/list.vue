@@ -32,7 +32,7 @@ export default {
     newCard(event) {
       event.preventDefault();
       this.editing = true;
-    };
+    },
     createCard(evt) {
       evt.preventDefault();
 
