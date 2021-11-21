@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :cards do
+  resources :cards, only: [:create, :update, :destroy] do
     member do
       put :move
     end
   end
 
-  resources :lists do
+  resources :lists, only: [:index, :create, :update, :destroy] do
     member do
       put :move
     end

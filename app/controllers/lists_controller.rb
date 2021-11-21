@@ -7,22 +7,9 @@ class ListsController < ApplicationController
     @lists = current_user.lists
   end
 
-  # GET /lists/1 or /lists/1.json
-  def show
-  end
-
   def move
     @list.insert_at(list_params[:position].to_i)
     render 'show.json'
-  end
-
-  # GET /lists/new
-  def new
-    @list = current_user.lists.new
-  end
-
-  # GET /lists/1/edit
-  def edit
   end
 
   # POST /lists or /lists.json

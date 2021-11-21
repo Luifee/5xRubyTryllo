@@ -89,7 +89,7 @@ export default {
 
 <style lang="scss" scoped>
 .list {
-  @apply bg-indigo-200 m-2 w-64 px-3 py-1 rounded;
+  @apply bg-indigo-200 m-2 w-64 px-3 py-3 rounded flex-none h-full;
 
   .header {
     @apply font-bold;
