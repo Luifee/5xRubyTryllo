@@ -6,7 +6,7 @@
     <div v-if="editing" class="dialog">
       <div class="inner">
         <a href="#" class="closeButton" @click="close"><i class="far fa-window-close"></i></a>
-        <textarea class="content">{{ card.name }}</textarea>
+        <textarea class="content" v-model="card_name"></textarea>
         <button class="button" @click="update">送出</button>
       </div>
     </div>
@@ -14,15 +14,18 @@
 </template>
 
 <script>
+// import { mapActions } from 'vuex';
 export default {
   name: 'Card',
   data: function() {
     return {
+      card_name: this.card.name,
       editing: false
     }
   },
   props: ["card"],
   methods: {
+    // ...mapActions(["updateCard"]),
     close(event) {
       event.preventDefault();
       this.editing = false;
@@ -30,6 +33,7 @@ export default {
 
     update(event) {
       event.preventDefault();
+      this.$store.dispatch("updateCard", { id: this.card.id, name: this.card_name });
       this.editing = false;
     }
   }
