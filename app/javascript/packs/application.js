@@ -10,11 +10,12 @@ ActiveStorage.start()
 import "stylesheets"
 
 // vue.js
-import Vue from "vue/dist/vue.esm";
-import List from "components/list";
-import draggable from "vuedraggable";
+import Vue from 'vue/dist/vue.esm';
+import List from 'components/list';
+import draggable from 'vuedraggable';
 import store from 'vuex/list';
 import { mapGetters, mapActions } from 'vuex';
+import Newlist from 'components/newlist';
 
 document.addEventListener("turbolinks:load", function(event) {
   let el = document.querySelector('#board');
@@ -35,7 +36,8 @@ document.addEventListener("turbolinks:load", function(event) {
       },
       components: {
 	List, 
-	draggable
+	draggable,
+        Newlist
       },
       methods: {
         ...mapActions(["loadList", "moveList"])
