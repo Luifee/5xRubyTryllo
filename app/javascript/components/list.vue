@@ -1,6 +1,9 @@
 <template>
   <div class="list">
-    <h2 class="header">{{ list.name }}<br /></h2>
+    <header>
+      <h2 class="header">{{ list.name }}</h2>
+      <a href="#" @click="deleteList"><i class="far fa-trash-alt"></i></a>
+    </header>
     <div class="deck">
       <draggable v-model="cards" ghost-class="ghost" group="list" @change="cardMoved">
         <Card v-for="card in cards" :card="card" :key="card.id"></Card>
@@ -36,6 +39,7 @@ export default {
       event.preventDefault();
       this.editing = true;
     },
+
     createCard(evt) {
       evt.preventDefault();
 
@@ -59,6 +63,7 @@ export default {
         }
       });
     },
+
     cardMoved(event) {
       let evt = event.added || event.moved;
       if (evt) {
@@ -81,6 +86,13 @@ export default {
             console.log(err);
           }
         });
+      }
+    },
+
+    deleteList(event) {
+      event.preventDefault();
+      if (confirm('確認刪除列表？')) {
+        this.$store.dispatch("removeList", this.list.id);
       }
     }
   }
@@ -117,5 +129,9 @@ export default {
 
 .ghost {
   @apply border-2 border-purple-300 border-dashed bg-gray-300;
+}
+
+header {
+  @apply flex justify-between items-center;
 }
 </style>

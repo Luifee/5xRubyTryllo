@@ -24,6 +24,11 @@ export default new Vuex.Store({
 
     ADD_LIST(state, list) {
       state.lists.push(list);
+    },
+
+    REMOVE_LIST(state, list_id) {
+      let list_index = state.lists.findIndex(list => list.id == list_id);
+      state.lists.splice(list_index, 1);
     }
   },
   actions: {
@@ -83,6 +88,20 @@ export default new Vuex.Store({
         dataType: 'json',
         success: resp => {
 	  commit('ADD_LIST', resp);
+	},
+        error: err => {
+	  console.log(err);
+	}
+      });
+    },
+
+    removeList({ commit }, list_id) {
+      Rails.ajax({
+        url: `/lists/${list_id}`,
+        type: 'DELETE',
+        dataType: 'json',
+        success: resp => {
+	  commit('REMOVE_LIST', list_id);
 	},
         error: err => {
 	  console.log(err);
